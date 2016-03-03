@@ -1,0 +1,39 @@
+ lambda function that will sum up two integers. Store that function in a typedef-ed pointer. Then use it to sum up an array of integers.
+
+2) Write a function that returns a lambda function. Initialize a pointer to that function call. Then use it to sum up a list of integers     
+
+3) Write a closure function that takes an integer and use that to double each element of a list of integers, storing that into a new list.
+
+4) Write a closure function that captures an integer and uses it to modify the elements of an array by 2n on each iteration, storing that into a new list.
+
+5) Implement the equals function
+
+6) Implement the copy function
+
+7) Implement the fill function
+
+8) Implement the all_of function
+
+9) Implement the accumulate function
+
+10) Implement the transform function
+
+11) Add 1 to each element of an array, but dont use the [] operator.
+
+12) Write a function thats returns an int pointer to an address. Then store the value at that address in an variable of type int, a variable of type int*, and a variable of type int&.
+
+13) Write a function that takes a value as an argument and increments it by 1.
+
+14) Write a function that takes an argument by address and increments the value at that address by 1.
+
+15) Implement the InputIterator class.
+
+16) Implement the OutputIterator class.
+
+17) Implement the ForwardIterator class.
+
+18) Implement the BiDirectionalIterator class.
+
+19) Implement the RandomIterator class.
+
+20) Implement the RangeIterator and Range class.

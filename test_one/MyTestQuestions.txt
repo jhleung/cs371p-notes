@@ -1,33 +1,210 @@
- lambda function that will sum up two integers. Store that function in a typedef-ed pointer. Then use it to sum up an array of integers.
+OPERATORS.C++ 
+
+1) Write a lambda function that will sum up two integers. Store that function in a typedef-ed pointer. Then use it to sum up an array of integers.
+
+using BF1 = int (*) (int);
+using BF2 = function <int (int)>
+BF1 g = [] (int i, int i) -> int {return i+j;};
+BF2 h = [] (int i, int j) -> int {return i+j;};
+
+const list<int> x = {1, 2, 3};
+vector <int> a = {1, 2, 3};
+int sum = accumulate(a, a+3, 0, g);
+int sum2 = accumulate(a, a+3, 0, h);
+
+int sum4 = accumulate(a, a+3, 0, [] (int i, int j) -> int {return i+j;};
+
+int sum3 = accumulate(x.begin(), x.end(), 0, g); 
+int sum5 = accumulate(x.begin(), x.end(), 0, h);
 
 2) Write a function that returns a lambda function. Initialize a pointer to that function call. Then use it to sum up a list of integers     
 
+using BF1 = int (*) (int);
+using BF2 = function<int (int)>;
+
+BF1 lambda() {
+  return [] (int i, int j) -> int {return i+j;};
+}
+
+BF1 h = lambda();
+BF2 G = lambda();
+ 
+const list<int> x = {1, 2, 3}
+int sum = accumulate(x.begin(), x.end(), 0, h);
+int sum2 = accumulate(x.begin(), x.end(), 0, g);
+ 
 3) Write a closure function that takes an integer and use that to double each element of a list of integers, storing that into a new list.
 
-4) Write a closure function that captures an integer and uses it to modify the elements of an array by 2n on each iteration, storing that into a new list.
+BF1 = function<int (int)>;
+const int = 2;
+BF1 g = [i] (int j) -> int {return i*j;};
+
+const list<int> x = {1, 2, 3};
+vector <int> a(3);
+
+transform(x.begin(), x.end(), a.begin(), g);
+
+4) Write a closure function that captures an integer and uses it to modify the elements of an array by 2^n on each iteration, storing that into a new list.
+int = 2;
+
+const list<int> x = {1, 2, 3};
+vector <int> a(3);
+
+transform(x.begin(), x.end(), a.begin(), [&i] (int j) -> int {return j * 2; j*=2;})
 
 5) Implement the equals function
 
+template <typename II1, typename II2>
+bool equals(II1 b, II1 e, II2 c) {
+  while (b != e) {
+    if (*b != *c}
+      return false;
+    ++b;
+    ++c;}
+  return true;
+}
+
 6) Implement the copy function
 
+template <typename II, typename OI>
+OI copy(II b, II e, OI c) {
+  while (b!=e) {
+   *c = *b;
+   ++b;
+   ++c;}
+  return c;}
+
+    
 7) Implement the fill function
+
+template <typename FI, typename T>
+void fill(FI b, FI e, const T& v) {
+  while (b!=e) {
+    *b = v;
+    ++b;
+  }
+}
 
 8) Implement the all_of function
 
+template <typename II, typename UF>
+bool all_of(II b, II e, UF F) {
+  while (b!=e) {
+    if (!(f(*b))
+      return false;
+    ++b;}
+  return true;}
+
 9) Implement the accumulate function
+
+template <typename II, typename T, typename UF>
+T accumulate(II b, II e, T init, UF f) {
+  while (b!=e) {
+    init += *b; //init = f(init, *b);
+    ++b;
+  }
+  return init;
+}
 
 10) Implement the transform function
 
+template <typename II, typename OI, typename UF>
+OI transform(II b, II e, OI init, typename UF> {
+  while (b!=e) {
+    *init = UF(*b);
+    ++b;
+    ++init;
+  }
+  return init; }
+
 11) Add 1 to each element of an array, but dont use the [] operator.
 
+int [] increment_one(int [] array) {
+  int temp[array.size())];
+  return transform(array.begin(), array.end(), a, [] (int j) -> int {return j+i})
+
+#include <array>
+#include <algorithm>
+#include <cassert>
+#include <iostream> 
+
+  using namespace std;
+     
+   void increment_one_a(int array[], int size) {
+      cout << "size in func: " << sizeof(array) << endl;
+           for (int i = 0; i < size; ++i) {
+              ++*(array+i); 
+              cout << i <<  " ";
+
+           }
+      cout << endl;
+   }
+
+int main() {
+  int a [] = {1, 2, 3};
+  int b [] = {2, 3, 4};
+  increment_one_a(a, sizeof(array)/sizeof(*array));
+  for (int i = 0; i < sizeof(a)/sizeof(*a); ++i) 
+    cout << i << " " << endl;
+  cout << "size in main: " << sizeof(a) << endl;
+  assert(equal(a, a+3, b));
+  return 0;
+}
+             
 12) Write a function thats returns an int pointer to an address. Then store the value at that address in an variable of type int, a variable of type int*, and a variable of type int&.
 
+int * donothing() {
+  int j = 2;
+  return &j;
+}
+
+int i = *donothing();
+int* j = donothing();
+int& j = *donothing();
+
 13) Write a function that takes a value as an argument and increments it by 1.
+void increment_one(int* r) {
+  *r++; }
+
+int a = 1;
+increment_one(&a);
+
+void increment_one_1(int& r) {
+  r++;}
+
 
 14) Write a function that takes an argument by address and increments the value at that address by 1.
 
 15) Implement the InputIterator class.
+class InputIterator {
+  private:
+    T _v;
+  public:
+    InputIterator(T v) : _v(v) {}
 
+    const T& operator * () const {
+      return _v;
+    }
+
+    bool operator == (const InputIterator& rhs) const {
+      return _v == rhs._v;
+    }
+
+    bool operator != (const InputIterator& rhs) const {
+      return !(*this == rhs);
+    }
+
+    InputIterator& operator ++ () {
+      _v++;
+      return *this;
+    }
+
+    InputIterator operator ++ (int) {
+      InputIterator temp = *this;
+      _v++;
+      return temp;
+    }
+}
 16) Implement the OutputIterator class.
 
 17) Implement the ForwardIterator class.
@@ -35,5 +212,68 @@
 18) Implement the BiDirectionalIterator class.
 
 19) Implement the RandomIterator class.
+class RandomIterator {
+  ..
+  ...
+  public:
+  ....
+  Iterator operator - (const Iterator& rhs) const {
+    return Iterator(_v-rhs._v);
+  }
+
+  Iterator operator + (T rhs) const{
+    return Iterator(_v+rhs)
+  }
+
+  Iterator operator + (T lhs, const Iterator& rhs) {
+    return Iterator(lhs + rhs._v);
+  }
+}
 
 20) Implement the RangeIterator and Range class.
+
+21) Implement prefix++.
+
+22) Implement postfix++.
+
+23) Implement find
+
+template <typename II, T>
+
+II find(II b, II e, const T& v) {
+  while (b!=e) {
+    if (*b==v)
+      return b;
+    ++b;}
+  return e;}
+
+24) Implement remove
+
+template <typename II, typename T>
+II remove(II b, II e, const T& v) {
+  II result = b;
+  while (b != e) {
+    if (!(*b == v)) {
+      *result = *b;
+      ++result; }
+   ++b;}
+  return result;}
+
+25) Implement reverse
+
+template <typename BI>
+void reverse(BI e, BI b){
+  while (e != b && e!=--b) {
+    swap(e,b)
+    ++e;
+  }
+
+FI 
+26) Implement swap
+
+template <typename T>
+void swap(T& a, T& b) {
+  T c = a;
+  a = b;
+  b = c; }
+

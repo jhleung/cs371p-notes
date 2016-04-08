@@ -1,5 +1,3 @@
-OPERATORS.C++ 
-
 1) Write a lambda function that will sum up two integers. Store that function in a typedef-ed pointer. Then use it to sum up an array of integers.
 
 using BF1 = int (*) (int);

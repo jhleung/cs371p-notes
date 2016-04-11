@@ -1,5 +1,5 @@
 // ----------
-// Consts.cpp
+// Consts.c++
 // ----------
 
 // http://www.cplusplus.com/doc/tutorial/constants/

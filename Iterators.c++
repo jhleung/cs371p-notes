@@ -18,13 +18,13 @@ int main () {
     cout << "Iterators.c++" << endl;
 
     {
-    istringstream         sin("2 3 4");
-    ostringstream         sout;
-    istream_iterator<int> b(sin);
-    istream_iterator<int> e;
-    ostream_iterator<int> x(sout, " ");
-    copy(b, e, x);
-    assert(sout.str() == "2 3 4 ");
+        istringstream         sin("2 3 4");
+        ostringstream         sout;
+        istream_iterator<int> b(sin);
+        istream_iterator<int> e;
+        ostream_iterator<int> x(sout, " ");
+        copy(b, e, x);
+        assert(sout.str() == "2 3 4 ");
     }
 /*
     {

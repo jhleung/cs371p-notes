@@ -1,2 +1,3 @@
 # cs371p-notes
-woo!
+TODO: Hopefully go over vector implementation this weekend
+

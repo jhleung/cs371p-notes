@@ -36,10 +36,10 @@ int main () {
     }
 */
     {
-    forward_list<int> x(3);
-    const int v = 2;
-    fill(x.begin(), x.end(), v);
-    assert(all_of(x.begin(), x.end(), [] (int w) -> bool {return w == v;}));
+        forward_list<int> x(3);
+        const int v = 2;
+        fill(x.begin(), x.end(), v);
+        assert(all_of(x.begin(), x.end(), [] (int w) -> bool {return w == v;}));
     }
 /*
     {
@@ -48,10 +48,10 @@ int main () {
     }
 */
     {
-    list<int>   x = {2, 3, 4};
-    vector<int> y = {4, 3, 2};
-    reverse(x.begin(), x.end());
-    assert(equal(x.begin(), x.end(), y.begin()));
+        list<int>   x = {2, 3, 4};
+        vector<int> y = {4, 3, 2};
+        reverse(x.begin(), x.end());
+        assert(equal(x.begin(), x.end(), y.begin()));
     }
 /*
     {
@@ -60,10 +60,10 @@ int main () {
     }
 */
     {
-    vector<int>   x = {4, 2, 3};
-    list<int>     y = {2, 3, 4};
-    sort(x.begin(), x.end());
-    assert(equal(x.begin(), x.end(), y.begin()));
+        vector<int>   x = {4, 2, 3};
+        list<int>     y = {2, 3, 4};
+        sort(x.begin(), x.end());
+        assert(equal(x.begin(), x.end(), y.begin()));
     }
 
     cout << "Done." << endl;

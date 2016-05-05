@@ -1,0 +1,88 @@
+//-----------
+// CONSTS
+//-----------
+
+const int ci = 3;
+const int* pc = &ci; // pointer to a const int
+
+int i = 2;
+int* const cp = &i; // immutable pointer pointing to int
+cp = &i; // cannot reassign
+
+const int ci = 3;
+const int* const cpc = &ci; // immutable pointer to immutable int
+int i = 2;
+const int* const cqc = &i; // can point to a mutable int
+++*cqc; //NO, increment of read-only location
+
+int i = 2;
+int &r = i; // same as int* const
+            // read/write reference to mutable int
+++r;
+assert(i==3);
+
+int i = 2;
+const int& sc = i; // same as const int* const
+                   // can refer to a mutable int
+++sc; // NO, increment of read-only reference 
+
+int s;
+int a[s]; // no, cant assign potentially garbage value as size
+
+//-------------
+// ARRAYS
+//-------------
+
+void f (int p[]) {
+    assert(sizeof(p)==8); //size of array func paramter will return int* instead of int[]
+    ++p;
+    ++p[0];
+    ++*p;
+}
+
+const size_t s = 10;
+const int a[s] = {2, 3, 4}; // fills array with zeros 
+
+int a[s]; //fills array with garbage values
+
+const int a[s] = {}; // fills array with zeros
+
+int a[] = {2, 3, 4};
+int b[] = a; // error: b doesnt not have a size
+
+int *const b = a;
+++a[1];
+assert(a[1]== b[1] == 4);
+
+// sizeof(a) returns total allocated (4 * 3 elements)
+// sizeof(a)/sizeof(int) = number of elements in array
+
+
+const size_t s = 10;
+const int v = 2;
+int* const a = new int[s];
+fill(a, a+s, v);
+int* const x = new int[s];
+copy(a, a+s, x);
+assert(a[1] == x[1]);
+
+
+struct A;
+struct B:A;
+B a[] = {A(), A(), A()); // no
+A a[] = {B(), B(), B()); // a[1].type == A
+
+B* const a = new A[10]; //in valid conversion from A* to B*
+A* const a = new B[10]; //dangerous; a[1],type == A
+
+//------------
+// VECTOR
+//------------
+
+T* a = new T[s];   // T(), s times
+fill(a, a + s, v); // =(T), s times
+delete [] a; // ~T(), s times
+
+T* b = new T[s];   // T(), s times
+copy(a, a + s, b); // =(T), s times
+

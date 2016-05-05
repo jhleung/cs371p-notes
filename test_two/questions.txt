@@ -1,0 +1,2 @@
+1. You have a pointer to an array. Write an expression to get the size of the array 
+

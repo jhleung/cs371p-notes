@@ -10,11 +10,15 @@ struct A {
 struct B : A {
     int j;
     string f() {
-        return "B::f";}};
+        return "B::f";}
+    void f (double a) {
+        double b = a;}};
 int main() {
 //    B* const a = new A[10];
     A* const a = new B[10];
     std::cout << "a[0]: " << a[0].f() << endl;
     std::cout << "a[1]: " << a[1].f() << endl; // undefined
+    B c;
+    c.f(2);
 }
 //

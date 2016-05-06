@@ -86,3 +86,37 @@ delete [] a; // ~T(), s times
 T* b = new T[s];   // T(), s times
 copy(a, a + s, b); // =(T), s times
 
+
+//-------------
+// SHAPE
+//-------------
+
+FRIENDS
+*A declares B to be friend
+1) A must be a class
+2) B can be a class, method, or function
+3) Friends have access to private parts
+4) Friendship is not transitive, symmetric
+
+static_cast<A>(B) you know B is goign to be A you don't need runtime determination
+dyanmic_cast<A>(B) you don't know if B is going to be an A, but if its not it'll give you null
+Shape1:
+friend functions that reveal what private members Shape has
+Circle inherits shape and also needs its own friend functions
+Need to cast because we dont wan't to repeat work. Can just call Shape's == to compare x and y
+    friend bool operator == (const Circle& lhs, const Circle& rhs) {
+        return (static_cast<const Shape&>(lhs) == rhs) && (lhs._r == rhs._r);}
+
+Shape2:
+friend functions that dont reveal what private members Shape has by using virtual methods 
+defined as protected
+these virtual methods are called inside the body of the friend functions
+Circle inherits shape but doesnt need its own friend functions.
+It needs its own virtual functions
+
+Circle c;
+Circle d;
+c==d will invoke Shape's == which will called Circle's equal in the body.
+
+Shape3:
+pure virtual methods

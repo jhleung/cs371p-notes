@@ -1,2 +1,9 @@
 1. You have a pointer to an array. Write an expression to get the size of the array 
 
+2. Write the vector class
+
+3. Write the shape class
+
+4. Construct a vector<AC*> a with pointers to seperate CCs
+
+5. Construct a vector<Ac*> b = a without memory leaks
